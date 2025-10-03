@@ -1,20 +1,20 @@
-from src.power import power_function
-from src.constants import SAMPLE_CONSTANT
+from src.tokenization import tokenize_fsm
+from src.calculator import calculator
+from src.brackets_processing import brackets_summator
 
 
 def main() -> None:
     """
-    Обязательнная составляющая программ, которые сдаются. Является точкой входа в приложение
+    Запускает ввод арифметичсекого выражения в ОПН для пользователя, которое он хочет вычислить
     :return: Данная функция ничего не возвращает
     """
 
-    target, degree = map(int, input("Введите два числа разделенные пробелом: ").split(" "))
-
-    result = power_function(target=target, power=degree)
-
+    expr = input("Введите арифметичсекое выражение в ОПН: ")
+    tokens_with_brackets = tokenize_fsm(expr=expr)
+    tokens_after_brackets = brackets_summator(tokens_with_brackets=tokens_with_brackets)
+    result = calculator(tokens=tokens_after_brackets)
     print(result)
 
-    print(SAMPLE_CONSTANT)
 
 if __name__ == "__main__":
     main()
