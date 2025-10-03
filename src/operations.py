@@ -14,10 +14,10 @@ def multiplication(x1, x2):
 
 
 def division_int(x1, x2):
-    if int(x1) == x1 and int(x2) == x2: # Проверка, что два числа - целые
-        return x1 // x2
     if x2 == 0: # Проверка деления на zero
         raise ZeroDivisionError
+    if int(x1) == x1 and int(x2) == x2: # Проверка, что два числа - целые
+        return x1 // x2
     raise ArithmeticError("целочисленное деление только для целых")
 
 
@@ -28,10 +28,10 @@ def division_float(x1, x2):
 
 
 def remainder(x1, x2):
-    if int(x1) == x1 and int(x2) == x2: # Проверка, что два числа - целые
-        return x1 % x2
     if x2 == 0:
         raise ZeroDivisionError
+    if int(x1) == x1 and int(x2) == x2: # Проверка, что два числа - целые
+        return x1 % x2
     raise ArithmeticError("деление по модулю только для целых")
 
 

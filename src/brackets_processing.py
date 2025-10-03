@@ -16,14 +16,11 @@ def brackets_summator(tokens_with_brackets: list) -> list:
             elif tokens_with_brackets[i][0] == ')':
                 if not stack: # Если закрывающая не встречает своей открывающей, то ошибка
                     raise ArithmeticError("Скобки расставлены неправильно")
-                print(tokens_with_brackets[stack[-1][1]:i + 1])
                 res_brackets = calculator(tokens_with_brackets[stack[-1][1]:i + 1]) # Подсчитываем выражение в скобках
-                print(res_brackets)
                 # Заменяем выражение в скобках на результат её вычисления
                 tokens_with_brackets = tokens_with_brackets[:stack[-1][1]] + [('NUMBER', res_brackets)] + tokens_with_brackets[i + 1:]
                 flag = True # Поднимаем флаг, т.к. посчитали одно выражение в скобках
                 stack.pop()  # Снимаем соответствующую открывающую скобку
-                print(len(tokens_with_brackets), tokens_with_brackets)
                 break # Выходим из цикла for, т.к. наш список токенов изменил размерность
         if not flag: # Если скобки были, но ничего не поменялось, значит, это ошибка в их расстановке
             raise ArithmeticError("Скобки расставлены неправильно")
